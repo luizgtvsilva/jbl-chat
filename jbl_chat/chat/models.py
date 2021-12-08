@@ -9,3 +9,13 @@ class User(models.Model):
 
     user_firstname = models.CharField(max_length=200)
     user_lastname = models.CharField(max_length=200)
+
+class Chat(models.Model):
+
+    class Meta:
+
+        db_table = 'chat'
+    
+    from_message = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+    message = models.CharField(max_length=1000)
+    to_message = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
