@@ -15,6 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url,include
+from django.contrib import admin
+from django.urls.conf import re_path
 
 urlpatterns = [
+    re_path(r'^', include('chat.urls')),
+    path('admin/', admin.site.urls),
 ]
