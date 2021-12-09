@@ -1,5 +1,7 @@
 from django.db import models
 from django.db.models.base import Model
+from django.utils.timezone import now
+
 
 class User(models.Model):
 
@@ -19,3 +21,4 @@ class Chat(models.Model):
     from_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
     message = models.CharField(max_length=1000)
     to_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+    date = models.DateTimeField(default=now, editable=False)
