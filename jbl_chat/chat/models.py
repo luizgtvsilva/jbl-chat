@@ -16,6 +16,6 @@ class Chat(models.Model):
 
         db_table = 'chat'
     
-    from_message = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+    from_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
     message = models.CharField(max_length=1000)
-    to_message = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+    to_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')

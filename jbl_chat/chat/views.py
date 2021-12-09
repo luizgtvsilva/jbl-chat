@@ -21,6 +21,8 @@ class ChatList(generics.ListCreateAPIView):
         to_id = self.request.query_params.get('to_id')
 
         if from_id is not None and to_id is not None:
-            queryset = Chat.objects.filter(from_message=from_id or to_id,to_message=to_id or from_id)
+            queryset1 = Chat.objects.filter(from_id=from_id,to_id=to_id)
+            queryset2 = Chat.objects.filter(from_id=to_id,to_id=from_id)
+            queryset =  queryset1.union(queryset2)
         
         return queryset
